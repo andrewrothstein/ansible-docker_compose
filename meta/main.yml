@@ -1,0 +1,31 @@
+---
+galaxy_info:
+  author: Andrew Rothstein
+  company: BlackRock
+  description: docker-compose role
+  galaxy_tags:
+    - development
+  license:
+    - MIT
+  min_ansible_version: 1.2
+  platforms:
+    - name: Archlinux
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - bullseye
+        - buster
+    - name: EL
+      versions:
+        - 8
+        - 9
+    - name: Fedora
+      versions:
+        - 37
+        - 38
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+  role_name: docker_compose
