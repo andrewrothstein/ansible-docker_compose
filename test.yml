@@ -1,6 +1,7 @@
 ---
 - hosts: all
   roles:
+    - role: andrewrothstein.docker_binaries
     - role: '{{ playbook_dir }}'
   tasks:
     - command: docker compose version
