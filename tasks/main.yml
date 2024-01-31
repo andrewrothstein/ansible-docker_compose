@@ -1,25 +1,25 @@
 ---
-- name: mkdir {{ docker_compose_eff_install_dir }}
+- name: Mkdir {{ docker_compose_eff_install_dir }}
   become: true
   become_user: root
-  file:
+  ansible.builtin.file:
     path: '{{ docker_compose_eff_install_dir }}'
     state: directory
-    mode: 0755
+    mode: '755'
 
-- name: downloading {{ docker_compose_url }} to {{ docker_compose_install_fq_exe }}
+- name: Downloading {{ docker_compose_url }} to {{ docker_compose_install_fq_exe }}
   become: true
   become_user: root
-  get_url:
+  ansible.builtin.get_url:
     url: '{{ docker_compose_url }}'
     dest: '{{ docker_compose_install_fq_exe }}'
     checksum: '{{ docker_compose_checksum }}'
-    mode: 0755
+    mode: '755'
 
-- name: linking {{ docker_compose_install_fq_link }} to {{ docker_compose_install_fq_exe }}
+- name: Linking {{ docker_compose_install_fq_link }} to {{ docker_compose_install_fq_exe }}
   become: true
   become_user: root
-  file:
+  ansible.builtin.file:
     src: '{{ docker_compose_install_fq_exe }}'
     dest: '{{ docker_compose_install_fq_link }}'
     state: link

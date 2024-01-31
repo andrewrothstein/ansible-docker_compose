@@ -1,11 +1,14 @@
 ---
-- hosts: all
+- name: Testing andrewrothstein.docker_compose
+  hosts: all
   roles:
     - role: andrewrothstein.docker_binaries
     - role: '{{ playbook_dir }}'
   tasks:
-    - command: docker compose version
+    - name: Executing 'docker compose version'
+      ansible.builtin.command: docker compose version
+      changed_when: false
       register: docker_compose_test_output
-    - name: docker compose version
-      debug:
+    - name: Output of 'docker compose version'
+      ansible.builtin.debug:
         msg: '{{ docker_compose_test_output.stdout }}'

@@ -6,23 +6,24 @@ galaxy_info:
   galaxy_tags:
     - development
   license: MIT
-  min_ansible_version: 1.2
+  min_ansible_version: '1.2'
+  namespace: andrewrothstein
   platforms:
-    - name: Archlinux
+    - name: ArchLinux
       versions:
         - all
     - name: Debian
       versions:
+        - bookworm
         - bullseye
-        - buster
     - name: EL
       versions:
-        - 8
-        - 9
+        - '8'
+        - '9'
     - name: Fedora
       versions:
-        - 37
-        - 38
+        - '38'
+        - '39'
     - name: Ubuntu
       versions:
         - focal
