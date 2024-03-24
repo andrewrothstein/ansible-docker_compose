@@ -3,7 +3,8 @@ docker_compose_persona: sys
 docker_compose_ver: 2.26.0
 
 docker_compose_mirror: https://github.com/docker/compose/releases/download
-
+docker_compose_arch_map:
+  x86_64: x86_64
 docker_compose_checksums:
   '2.0.1':
     # https://github.com/docker/compose/releases/download/v2.0.1/docker-compose-darwin-x86_64.sha256
