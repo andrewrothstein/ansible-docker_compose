@@ -1,6 +1,8 @@
 ---
 - name: Testing andrewrothstein.docker_compose
   hosts: all
+#  vars:
+#    docker_compose_persona: usr
   roles:
     - role: andrewrothstein.docker_binaries
     - role: '{{ playbook_dir }}'
