@@ -1,28 +1,10 @@
 ---
-- name: Mkdirs
-  with_items:
-    - '{{ docker_compose_binary_install_dir }}'
-    - '{{ docker_compose_install_dir }}'
-  become: '{{ docker_compose_escalate | bool }}'
-  become_user: root
-  ansible.builtin.file:
-    path: '{{ item }}'
-    state: directory
-    mode: '755'
-
-- name: Downloading {{ docker_compose_url }} to {{ docker_compose_binary_install_exe }}
-  become: '{{ docker_compose_escalate | bool }}'
-  become_user: root
-  ansible.builtin.get_url:
-    url: '{{ docker_compose_url }}'
-    dest: '{{ docker_compose_binary_install_exe }}'
-    checksum: '{{ docker_compose_checksum }}'
-    mode: '755'
-
-- name: Linking {{ docker_compose_install_link }} to {{ docker_compose_binary_install_exe }}
-  become: '{{ docker_compose_escalate | bool }}'
-  become_user: root
-  ansible.builtin.file:
-    src: '{{ docker_compose_binary_install_exe }}'
-    dest: '{{ docker_compose_install_link }}'
-    state: link
+- name: Deploying plugin
+  ansible.builtin.include_role:
+    name: andrewrothstein.docker_cli_plugin
+  vars:
+    docker_cli_plugin_name: docker-compose
+    docker_cli_persona: '{{ docker_compose_persona }}'
+    docker_cli_plugin_ver: '{{ docker_compose_ver }}'
+    docker_cli_plugin_mirror: '{{ docker_compose_mirror }}'
+    docker_cli_plugin_checksums: '{{ docker_compose_checksums }}'
