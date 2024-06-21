@@ -4,7 +4,7 @@
     name: andrewrothstein.docker_cli_plugin
   vars:
     docker_cli_plugin_name: docker-compose
-    docker_cli_persona: '{{ docker_compose_persona }}'
+    docker_cli_plugin_persona: '{{ docker_compose_persona }}'
     docker_cli_plugin_ver: '{{ docker_compose_ver }}'
     docker_cli_plugin_mirror: '{{ docker_compose_mirror }}'
     docker_cli_plugin_arch_map: '{{ docker_compose_arch_map }}'
