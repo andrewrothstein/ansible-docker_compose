@@ -18,7 +18,7 @@ dl()
     local url=$MIRROR/v$ver/$exe
 
     printf "    # %s\n" $url
-    printf "    %s: sha256:%s\n" $platform $(fgrep $exe $lchecksums | awk '{print $1}')
+    printf "    %s: sha256:%s\n" $platform $(grep -e "$exe\$" $lchecksums | awk '{print $1}')
 }
 
 dl_ver() {
@@ -43,4 +43,4 @@ dl_ver() {
     dl $lchecksums $ver windows x86_64 .exe
 }
 
-dl_ver ${1:-2.30.1}
+dl_ver ${1:-2.40.3}
