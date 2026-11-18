@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
-DIR=~/Downloads
+DIR=$(mktemp -d)
+trap 'rm -rf "$DIR"' EXIT
 MIRROR=https://github.com/docker/compose/releases/download
 
 # https://github.com/docker/compose/releases/download/v2.10.0/checksums.txt
@@ -32,10 +33,7 @@ dl_ver() {
     ver=$1
     printf "  '%s':\n" "$ver"
     local lchecksums="${DIR}/docker-compose-${ver}-checksums.txt"
-    if [ ! -e "$lchecksums" ];
-    then
-        curl -fsSL --proto '=https' --tlsv1.2 -o "$lchecksums" "${MIRROR}/v${ver}/checksums.txt"
-    fi
+    curl -fsSL --proto '=https' --tlsv1.2 -o "$lchecksums" "${MIRROR}/v${ver}/checksums.txt"
 
     dl "$lchecksums" "$ver" darwin aarch64
     dl "$lchecksums" "$ver" darwin x86_64
@@ -50,6 +48,6 @@ dl_ver() {
     dl "$lchecksums" "$ver" windows x86_64 .exe
 }
 
-for v in "${@:-5.7.0}"; do
+for v in "${@:-5.8.0}"; do
     dl_ver "$v"
 done
