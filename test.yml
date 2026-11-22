@@ -3,10 +3,13 @@
   hosts: all
 #  vars:
 #    docker_compose_persona: usr
-  roles:
-    - role: andrewrothstein.docker_binaries
-    - role: '{{ playbook_dir }}'
   tasks:
+    - name: Installing andrewrothstein.docker_binaries
+      ansible.builtin.include_role:
+        name: andrewrothstein.docker_binaries
+    - name: Installing docker_compose
+      ansible.builtin.include_role:
+        name: '{{ playbook_dir }}'
     - name: Executing 'docker compose version'
       ansible.builtin.command: docker compose version
       changed_when: false
